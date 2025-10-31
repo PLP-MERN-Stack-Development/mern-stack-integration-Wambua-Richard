@@ -1,78 +1,306 @@
-# MERN Stack Integration Assignment
+🔄 Week 4: Deep Dive into MERN Stack Integration
+🚀 Objective
 
-This assignment focuses on building a full-stack MERN (MongoDB, Express.js, React.js, Node.js) application that demonstrates seamless integration between front-end and back-end components.
+Build a full-stack MERN (MongoDB, Express.js, React.js, Node.js) blog application demonstrating seamless integration between front-end and back-end components — including database operations, API communication, authentication, and state management.
 
-## Assignment Overview
+📖 Project Overview
 
-You will build a blog application with the following features:
-1. RESTful API with Express.js and MongoDB
-2. React front-end with component architecture
-3. Full CRUD functionality for blog posts
-4. User authentication and authorization
-5. Advanced features like image uploads and comments
+This project is a Blog Management System built with the MERN stack.
+Users can:
 
-## Project Structure
+View all blog posts with pagination
 
-```
-mern-blog/
-├── client/                 # React front-end
-│   ├── public/             # Static files
-│   ├── src/                # React source code
-│   │   ├── components/     # Reusable components
-│   │   ├── pages/          # Page components
-│   │   ├── hooks/          # Custom React hooks
-│   │   ├── services/       # API services
-│   │   ├── context/        # React context providers
-│   │   └── App.jsx         # Main application component
-│   └── package.json        # Client dependencies
-├── server/                 # Express.js back-end
-│   ├── config/             # Configuration files
-│   ├── controllers/        # Route controllers
-│   ├── models/             # Mongoose models
-│   ├── routes/             # API routes
-│   ├── middleware/         # Custom middleware
-│   ├── utils/              # Utility functions
-│   ├── server.js           # Main server file
-│   └── package.json        # Server dependencies
-└── README.md               # Project documentation
-```
+Read single post details
 
-## Getting Started
+Create, edit, or delete posts (authenticated users)
 
-1. Accept the GitHub Classroom assignment invitation
-2. Clone your personal repository that was created by GitHub Classroom
-3. Follow the setup instructions in the `Week4-Assignment.md` file
-4. Complete the tasks outlined in the assignment
+Upload featured images
 
-## Files Included
+Add and view comments
 
-- `Week4-Assignment.md`: Detailed assignment instructions
-- Starter code for both client and server:
-  - Basic project structure
-  - Configuration files
-  - Sample models and components
+Filter and search posts by category or keyword
 
-## Requirements
+The project demonstrates complete full-stack integration:
 
-- Node.js (v18 or higher)
-- MongoDB (local installation or Atlas account)
-- npm or yarn
-- Git
+MongoDB for data storage
 
-## Submission
+Express.js for API routing and validation
 
-Your work will be automatically submitted when you push to your GitHub Classroom repository. Make sure to:
+React.js for the dynamic front-end
 
-1. Complete both the client and server portions of the application
-2. Implement all required API endpoints
-3. Create the necessary React components and hooks
-4. Document your API and setup process in the README.md
-5. Include screenshots of your working application
+Node.js for the server-side environment
 
-## Resources
+🧩 Directory Structure
+mern-blog-app/
+│
+├── backend/                     # Express.js back-end
+│   ├── models/                 # Mongoose models (Post, Category, User, Comment)
+│   ├── routes/                 # API route definitions
+│   ├── middleware/             # Authentication & error handling
+│   ├── controllers/            # Logic for each route
+│   ├── uploads/                # Uploaded images
+│   ├── .env.example            # Sample server environment variables
+│   └── server.js               # Entry point for the server
+│
+├── frontend/                     # React.js front-end
+│   ├── src/
+│   │   ├── components/         # Reusable UI components (Navbar, PostList, etc.)
+│   │   ├── pages/              # Page-level components (Home, PostPage, NewPostPage)
+│   │   ├── context/            # Context API for state management
+│   │   ├── services/           # API service (axios instance)
+│   │   ├── hooks/              # Custom hooks for API calls and form logic
+│   │   ├── App.jsx             # App entry with routing
+│   │   └── main.jsx            # React DOM rendering
+│   ├── .env.example            # Sample client environment variables
+│   └── vite.config.js          # Vite configuration with proxy setup
+│
+└── README.md                   # Project documentation
 
-- [MongoDB Documentation](https://docs.mongodb.com/)
-- [Express.js Documentation](https://expressjs.com/)
-- [React Documentation](https://react.dev/)
-- [Node.js Documentation](https://nodejs.org/en/docs/)
-- [Mongoose Documentation](https://mongoosejs.com/docs/) 
+⚙️ Technologies Used
+Frontend
+
+React.js (Vite)
+
+React Router
+
+Tailwind CSS
+
+Axios
+
+Context API / useReducer
+
+React Hook Form / Yup (form validation)
+
+Backend
+
+Node.js
+
+Express.js
+
+MongoDB + Mongoose
+
+Multer (file uploads)
+
+JSON Web Tokens (JWT)
+
+bcrypt.js (password hashing)
+
+express-validator / Joi (validation)
+
+🧪 Tasks Breakdown
+Task 1: Project Setup
+
+Created server (/server) and client (/client) folders
+
+Configured MongoDB connection using Mongoose
+
+Setup Express.js server with middleware (CORS, JSON parser)
+
+Configured Vite React front-end with API proxy
+
+Managed secrets with .env variables
+
+Task 2: Back-End Development
+
+Designed RESTful API endpoints:
+
+GET /api/posts – Fetch all posts
+
+GET /api/posts/:id – Fetch single post
+
+POST /api/posts – Create a new post
+
+PUT /api/posts/:id – Update post
+
+DELETE /api/posts/:id – Delete post
+
+GET /api/categories – Fetch all categories
+
+POST /api/categories – Create new category
+
+Implemented Mongoose models (Post, Category, User, Comment)
+
+Added input validation and error handling middleware
+
+Task 3: Front-End Development
+
+Created key components:
+
+Navbar.jsx
+
+PostList.jsx
+
+PostDetails.jsx
+
+PostForm.jsx
+
+Set up React Router for navigation
+
+Implemented custom hook for API communication (useApi.js)
+
+Task 4: Integration and Data Flow
+
+Created a centralized api.js for backend communication
+
+Managed global state with Context API
+
+Implemented form validation (create/edit post)
+
+Added optimistic UI updates and loading/error states
+
+Task 5: Advanced Features
+
+User Authentication (JWT-based login & registration)
+
+Protected Routes for post creation/editing
+
+Image Uploads using Multer
+
+Pagination, Search, and Filtering
+
+Comments System per blog post
+
+🧠 API Documentation (Sample)
+Method	Endpoint	Description	Auth Required
+GET	/api/posts	Get all posts (supports pagination & search)	❌
+GET	/api/posts/:id	Get single post	❌
+POST	/api/posts	Create new post	✅
+PUT	/api/posts/:id	Update post	✅
+DELETE	/api/posts/:id	Delete post	✅
+GET	/api/categories	Fetch all categories	❌
+POST	/api/categories	Create new category	✅
+POST	/api/auth/register	Register a user	❌
+POST	/api/auth/login	Login user	❌
+GET	/api/posts/:id/comments	Get comments for a post	❌
+POST	/api/posts/:id/comments	Add a comment	✅
+🛠️ Setup Instructions
+1️⃣ Prerequisites
+
+Make sure you have:
+
+Node.js v18+
+
+MongoDB (local or Atlas)
+
+npm or yarn
+
+2️⃣ Clone Repository
+git clone <your-repo-url>
+cd mern-blog-app
+
+3️⃣ Setup Backend
+cd server
+cp .env.example .env
+npm install
+npm run dev
+
+
+Example .env for server:
+
+PORT=5000
+MONGO_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/blog
+JWT_SECRET=supersecretkey
+CLOUDINARY_URL=your_cloudinary_upload_url  # optional for image hosting
+
+4️⃣ Setup Frontend
+cd client
+cp .env.example .env
+npm install
+npm run dev
+
+
+Example .env for client:
+
+VITE_API_URL=http://localhost:5000/api
+
+
+The client will run on http://localhost:5173
+
+🧰 Testing the App
+
+Register a new user → /register
+
+Log in → token stored in localStorage
+
+Create a new post with title, body, category, and image
+
+View post list with pagination and filtering
+
+Add comments to a post
+
+Try editing or deleting posts as an authenticated user
+
+💅 Example Screens (optional)
+
+You can include screenshots such as:
+
+Home page with posts list
+
+Post details view
+
+Create/Edit post form
+
+Login/Register forms
+
+(Add them under a /screenshots folder and reference here)
+
+🚀 Deployment
+Front-End (Netlify or GitHub Pages)
+
+Build project:
+
+cd client
+npm run build
+
+
+Deploy dist/ folder to Netlify or GitHub Pages.
+
+Back-End (Render / Vercel / Railway)
+
+Push your server folder to a GitHub repo.
+
+Connect to Render or Railway.
+
+Add environment variables (same as .env).
+
+Deploy your backend — note the API base URL and update VITE_API_URL in your client .env.
+
+✅ Expected Outcome
+
+A fully functional MERN blog app
+
+Authentication, CRUD operations, file uploads, pagination, and comments
+
+Responsive UI and well-structured code
+
+Seamless data flow between React and Express
+
+🧾 Submission Instructions
+
+Accept your GitHub Classroom assignment invitation.
+
+Clone your personal repository.
+
+Complete all tasks and commit frequently.
+
+Push your code to GitHub regularly.
+
+Include:
+
+Complete client and server code
+
+.env.example files
+
+Screenshots
+
+This README file
+
+Autograding will check your submission automatically.
+
+The instructor will review after autograding completes.
+
+✨ Author
+
+Name: Richard Wambua
+Course: PLP MERN Stack Development
+Week 4: Deep Dive into MERN Stack Integration
